@@ -7,7 +7,7 @@ web_data = requests.get(url)
 # print(web_data.text)
 
 soup = BeautifulSoup(web_data.text,'html.parser')
-file_words = soup.find_all("a",{"class":"a-wrap"})
+find_words = soup.find_all("a",{"class":"a-wrap"})
 
-for el in file_words:
+for el in find_words:
     print(el.get('href'))
