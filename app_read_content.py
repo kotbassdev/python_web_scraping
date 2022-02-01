@@ -6,7 +6,17 @@ web_data = requests.get(url)
 
 soup = BeautifulSoup(web_data.text,'html.parser')
 h1 = soup.find("h1")
-print('h1:' +str(h1.text))
+# print('h1:' +str(h1.text))
 
 content = soup.find("div",{"class":"content-detail-box"})
-print(content.text)
+# print(content.text)
+
+
+bx_detail = soup.find("div",{"class":"bx-detail"})
+img = bx_detail.find("img")
+img_src = img.get('src')
+
+img_res = requests.get(img_src)
+file = open("image.jpg","wb")
+file.write(img_res.content)
+file.close()
